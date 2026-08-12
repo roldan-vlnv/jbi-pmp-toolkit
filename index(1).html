@@ -1,0 +1,539 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PMP Delivery Knowledge Base | JBi Digital</title>
+<meta name="description" content="An internal delivery knowledge base for the JBi Digital team, derived from the PMP / PMI project management framework: the practices, artefacts, and habits behind each project, with real examples from our work.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cove:#091644; --cove-dark:#050F33; --blue:#003595; --electric:#003AFF;
+    --electric-light:#B3C4FF; --ink:#1E1E1E; --grey:#555555; --silver:#999999;
+    --paper:#F6F6F6; --white:#FFFFFF; --line:#e4e7ef;
+    --pe:#003AFF; --pr:#003595; --be:#5a74c9;
+    --radius:14px; --shadow:0 1px 2px rgba(9,22,68,.06),0 8px 30px rgba(9,22,68,.06);
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;font-family:'Work Sans',system-ui,sans-serif;color:var(--ink);background:var(--paper);line-height:1.5;-webkit-font-smoothing:antialiased}
+  code,.mono{font-family:'Space Mono',ui-monospace,monospace}
+  a{color:var(--electric);text-decoration:none}
+  a:hover{text-decoration:underline}
+  button{font-family:inherit;cursor:pointer}
+
+  /* header */
+  header.top{background:var(--cove);color:#fff;padding:26px clamp(18px,5vw,64px) 22px}
+  .top-inner{max-width:1120px;margin:0 auto}
+  .brand{font-weight:800;letter-spacing:.14em;font-size:13px;text-transform:uppercase;color:var(--electric-light)}
+  h1.title{font-size:clamp(26px,4.4vw,42px);font-weight:800;letter-spacing:-.02em;margin:.24em 0 .1em}
+  .subtitle{color:#c7d0ee;font-size:clamp(14px,1.6vw,16px);max-width:60ch;font-weight:400}
+
+
+  /* subscribe cta */
+  /*.cta{max-width:1120px;margin:18px auto 0;display:flex;flex-wrap:wrap;gap:14px 18px;align-items:center}
+  .cta form{display:flex;gap:9px;flex-wrap:wrap;align-items:center}
+  .cta input[type="email"]{border:0;border-radius:999px;padding:12px 18px;font-size:15px;font-family:inherit;min-width:240px;background:#fff;color:var(--ink)}
+  .cta input[type="email"]::placeholder{color:var(--silver)}
+  .cta input[type="email"]:focus{outline:2px solid var(--electric-light);outline-offset:2px}
+  .subscribe-btn{display:inline-flex;align-items:center;gap:9px;background:var(--electric);color:#fff;border:0;border-radius:999px;padding:12px 20px;font-size:15px;font-weight:700;letter-spacing:.005em;box-shadow:0 6px 20px rgba(0,58,255,.35);transition:transform .12s,filter .15s}
+  .subscribe-btn:hover{filter:brightness(1.08);transform:translateY(-1px)}
+  .subscribe-btn:active{transform:translateY(0)}
+  .subscribe-btn svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2}
+  .cta-note{color:#c7d0ee;font-size:12.5px;max-width:42ch;flex:1;min-width:220px}
+  .cta-note b{color:#fff;font-weight:600}
+  .cta-note a{color:#fff;text-decoration:underline;text-underline-offset:2px}
+  .cta .consent{flex-basis:100%;display:flex;gap:8px;align-items:flex-start;color:#c7d0ee;font-size:12px;line-height:1.45;max-width:62ch;margin-top:2px}
+  .cta .consent input{margin-top:2px;flex:none}
+  /* privacy notice */
+  /*.privacy{max-width:1120px;margin:26px auto 0;padding:0 28px}
+  .privacy h2{font-size:15px;color:var(--ink);margin:0 0 8px}
+  .privacy p{color:#4a5570;font-size:13px;line-height:1.6;margin:0 0 10px;max-width:82ch}
+  .privacy a{color:var(--electric)}
+
+
+  /* delivery themes */
+  .spectrum{max-width:1120px;margin:22px auto 0;display:flex;height:46px;border-radius:10px;overflow:hidden;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
+  .seg{border:0;color:#fff;font-family:inherit;display:flex;flex-direction:column;justify-content:center;padding:0 14px;text-align:left;transition:filter .15s;position:relative}
+  .seg:hover,.seg:focus-visible{filter:brightness(1.12);outline:none}
+  .seg b{font-size:13px;font-weight:700;letter-spacing:.01em}
+  .seg span{font-size:11px;opacity:.85;font-family:'Space Mono',monospace}
+  .seg.pe{background:var(--pe)} .seg.pr{background:var(--blue)} .seg.be{background:var(--be)}
+
+  /* sticky controls */
+  .controls{position:sticky;top:0;z-index:20;background:rgba(246,246,246,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .controls-inner{max-width:1120px;margin:0 auto;padding:12px clamp(18px,5vw,64px);display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+  .pills{display:flex;gap:8px;flex-wrap:wrap}
+  .pill{border:1px solid var(--line);background:#fff;color:var(--grey);padding:8px 15px;border-radius:999px;font-size:13px;font-weight:600;transition:.15s}
+  .pill:hover{border-color:var(--electric-light)}
+  .pill[aria-pressed="true"]{background:var(--cove);color:#fff;border-color:var(--cove)}
+  .search{margin-left:auto;position:relative;flex:1;min-width:200px;max-width:340px}
+  .search input{width:100%;border:1px solid var(--line);border-radius:999px;padding:9px 15px 9px 38px;font-size:14px;font-family:inherit;background:#fff;color:var(--ink)}
+  .search input:focus{outline:2px solid var(--electric);outline-offset:1px;border-color:transparent}
+  .search svg{position:absolute;left:13px;top:50%;transform:translateY(-50%);width:16px;height:16px;stroke:var(--silver)}
+
+  main{max-width:1120px;margin:0 auto;padding:26px clamp(18px,5vw,64px) 80px}
+
+  /* domain overview */
+  .domain-head{margin:14px 0 20px;padding:22px 24px;background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);border-left:6px solid var(--blue)}
+  .domain-head.pe{border-left-color:var(--pe)} .domain-head.pr{border-left-color:var(--blue)} .domain-head.be{border-left-color:var(--be)}
+  .domain-head .eyebrow{font-family:'Space Mono',monospace;font-size:12px;color:var(--blue);letter-spacing:.06em;text-transform:uppercase}
+  .domain-head h2{margin:.2em 0 .35em;font-size:23px;font-weight:800;letter-spacing:-.01em}
+  .domain-head .weight{font-family:'Space Mono',monospace;font-weight:700;color:var(--grey);font-size:13px}
+  .domain-head p{margin:.6em 0 0;color:var(--grey);max-width:80ch}
+  .domain-head .testing{margin-top:12px;font-size:14px;color:var(--ink)}
+  .domain-head .testing b{color:var(--blue)}
+  .dtip{margin-top:14px;display:flex;gap:10px;align-items:flex-start;background:#eef1fb;border-radius:10px;padding:11px 14px;font-size:13.5px;color:var(--cove)}
+  .dtip svg{flex:none;width:16px;height:16px;margin-top:2px;stroke:var(--electric)}
+
+  .count{font-size:13px;color:var(--silver);margin:0 0 14px;font-weight:500}
+
+  /* task cards */
+  .task{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);margin-bottom:12px;overflow:hidden;border:1px solid transparent;transition:border-color .15s}
+  .task:hover{border-color:var(--electric-light)}
+  .task-btn{width:100%;border:0;background:none;display:flex;align-items:center;gap:16px;padding:17px 20px;text-align:left}
+  .code{font-family:'Space Mono',monospace;font-weight:700;font-size:12px;color:#fff;background:var(--blue);border-radius:7px;padding:5px 9px;flex:none;letter-spacing:.02em}
+  .code.pe{background:var(--pe)} .code.pr{background:var(--blue)} .code.be{background:var(--be)}
+  .task-name{font-weight:700;font-size:16px;flex:1;letter-spacing:-.01em}
+  .chev{flex:none;width:20px;height:20px;stroke:var(--silver);transition:transform .2s}
+  .task[open] .chev{transform:rotate(180deg)}
+  .task-body{padding:0 20px 22px 20px;display:none;animation:fade .2s ease}
+  .task[open] .task-body{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(-4px)}to{opacity:1}}
+
+  .block{margin-top:18px}
+  .block h4{font-size:11px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:var(--blue);margin:0 0 7px;display:flex;align-items:center;gap:7px}
+  .block h4 svg{width:14px;height:14px;stroke:var(--blue);fill:none}
+  .block p{margin:0;color:var(--grey);font-size:14.5px}
+  .example{background:var(--paper);border-radius:10px;padding:13px 15px;font-size:14px;color:var(--ink);border-left:3px solid var(--electric-light)}
+  .enablers{list-style:none;padding:0;margin:0;display:grid;gap:7px}
+  .enablers li{display:flex;gap:10px;font-size:13.5px;color:var(--ink);background:var(--paper);border-radius:9px;padding:9px 12px}
+  .enablers .en-name{font-weight:600}
+  .enablers .en-gloss{color:var(--grey)}
+  .en-dot{flex:none;width:6px;height:6px;border-radius:50%;background:var(--blue);margin-top:7px}
+  .tips{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+  .tips li{display:flex;gap:10px;font-size:14px;color:var(--cove);background:#eef1fb;border-radius:10px;padding:10px 13px}
+  .tips svg{flex:none;width:15px;height:15px;stroke:var(--electric);margin-top:2px}
+  .links{display:flex;flex-wrap:wrap;gap:8px}
+  .links a{font-size:13px;font-weight:600;border:1px solid var(--line);border-radius:8px;padding:7px 12px;color:var(--blue);display:inline-flex;align-items:center;gap:6px;background:#fff}
+  .links a:hover{border-color:var(--electric);text-decoration:none;color:var(--electric)}
+  .links svg{width:13px;height:13px;stroke:currentColor}
+
+  .empty{text-align:center;color:var(--silver);padding:60px 20px;font-size:15px}
+
+  /* JBi in practice block (inside task cards) */
+  .block.jbi-block{background:linear-gradient(180deg,#eef1fb,#f4f6fd);border:1px solid #d7def6;border-left:4px solid var(--electric);border-radius:12px;padding:13px 15px;margin-top:18px}
+  .block.jbi-block h4{color:var(--cove);margin-bottom:6px}
+  .block.jbi-block h4 svg{stroke:var(--electric)}
+  .block.jbi-block p{color:var(--cove);font-size:14.5px}
+  .block.jbi-block .jbi-arte{margin-top:9px;display:flex;flex-wrap:wrap;gap:6px}
+  .jbi-tag{font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.01em;color:#fff;background:var(--electric);border-radius:6px;padding:4px 8px}
+  .jbi-tag.team{background:var(--blue)}
+
+  /* update banner */
+  .banner{max-width:1120px;margin:16px auto 0;padding:0 clamp(18px,5vw,64px)}
+  .banner-in{background:#fff;border:1px solid var(--line);border-left:4px solid var(--electric);border-radius:12px;padding:13px 16px;font-size:13.5px;color:var(--grey);display:flex;gap:11px;align-items:flex-start}
+  .banner-in svg{flex:none;width:17px;height:17px;stroke:var(--electric);margin-top:1px}
+  .banner-in b{color:var(--ink)}
+
+  footer{border-top:1px solid var(--line);padding:22px clamp(18px,5vw,64px);color:var(--silver);font-size:12.5px;text-align:center;background:#fff}
+  mark{background:var(--electric-light);color:var(--cove);padding:0 1px;border-radius:2px}
+
+  /* toast */
+  .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);background:var(--cove);color:#fff;padding:12px 18px;border-radius:10px;font-size:14px;font-weight:500;box-shadow:0 10px 30px rgba(9,22,68,.3);opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;z-index:50;max-width:90vw}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+  @media (max-width:560px){
+    .spectrum{height:auto;flex-direction:column}
+    .seg{flex-direction:row;justify-content:space-between;padding:10px 14px}
+    .search{margin-left:0;max-width:none}
+    .task-name{font-size:15px}
+  }
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<header class="top">
+  <div class="top-inner">
+    <div class="brand">JBi Digital · Delivery knowledge base</div>
+    <h1 class="title">PMP Delivery Knowledge Base</h1>
+    <p class="subtitle">Knowledge Base derived from the PMP / PMI framework adapted to JBi Digital, referncing best practices, artefacts, and habits behind each project, with practical scenarios and examples.</p>
+  </div>
+  <div class="spectrum" role="group" aria-label="Delivery themes — click to filter">
+    <button class="seg pe" data-domain="people"><b>People</b><span>8 tasks</span></button>
+    <button class="seg pr" data-domain="process"><b>Process</b><span>10 tasks</span></button>
+    <button class="seg be" data-domain="business"><b>Business Environment</b><span>8 tasks</span></button>
+  </div>
+</header>
+
+<div class="controls">
+  <div class="controls-inner">
+    <div class="pills" role="group" aria-label="Filter by domain">
+      <button class="pill" data-domain="all" aria-pressed="true">All domains</button>
+      <button class="pill" data-domain="people" aria-pressed="false">People</button>
+      <button class="pill" data-domain="process" aria-pressed="false">Process</button>
+      <button class="pill" data-domain="business" aria-pressed="false">Business Environment</button>
+    </div>
+    <div class="search">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <input id="q" type="search" placeholder="Search tasks, enablers, keywords…" aria-label="Search the toolkit">
+    </div>
+  </div>
+</div>
+
+<main id="app"></main>
+
+<!--<section class="privacy" id="privacy">
+  <h2>How your data is handled</h2>
+  <p>When you subscribe, your email address is stored by <a href="https://buttondown.com/features/privacy" target="_blank" rel="noopener">Buttondown</a>, the newsletter service that powers these emails, and is used for one purpose only: to send you the daily PMP coaching email. Your address is never sold, shared for advertising, or used for anything else.</p>
+  <p>Buttondown acts as the data processor. You can unsubscribe at any time using the link in every email, and you can ask to see the data held about you or to have it deleted — just email the address above, and deletion is actioned promptly. Buttondown is GDPR-compliant.</p>
+</section>-->
+
+<footer>
+  An internal delivery knowledge base for the JBi Digital team, derived from the PMP / PMI project management framework and structured around its delivery principles.
+  <br>Artefact and process references are internal to JBi. PMP and PMI are marks of the Project Management Institute, Inc. · Examples are illustrative.
+</footer>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<script>
+  function showToast(msg){
+    const t = document.getElementById("toast");
+    t.textContent = msg; t.classList.add("show");
+    clearTimeout(showToast._t);
+    showToast._t = setTimeout(()=>t.classList.remove("show"), 4600);
+  }
+
+  const form = document.getElementById("subscribe-form");
+  if(form){
+    const NOT_CONFIGURED = form.getAttribute("action").indexOf("USERNAME") !== -1;
+    form.addEventListener("submit", function(e){
+      if(NOT_CONFIGURED){
+        e.preventDefault();
+        showToast("Email signup isn't connected yet. Add your Buttondown username (see the setup guide).");
+        return;
+      }
+      // Open the provider's confirmation window; the POST still submits.
+      window.open(form.getAttribute("action").replace("/api/emails/embed-subscribe/","/"), "popupwindow");
+      showToast("Thanks! Check your inbox to confirm your subscription.");
+    });
+  }
+</script>
+
+<script>
+const DOMAINS = {
+  people: {label:"People", code:"PE", weight:"33%", tasks:8, cls:"pe",
+    blurb:"The interpersonal and leadership side of delivery: setting a shared vision, handling conflict, leading the team, and engaging and aligning stakeholders. This is where projects are won or lost, whatever the tooling.",
+    testing:"How you show up as a lead when things get messy: reading the room, regulating yourself, and understanding the root cause before you act.",
+    tip:"When a delivery situation gets tense, talk to the people first. Understand what is really going on before you change the plan."},
+  process: {label:"Process", code:"PR", weight:"41%", tasks:10, cls:"pr",
+    blurb:"The craft of running the work: integration, scope, value, resources, procurement, finance, quality, schedule, status, and closure, across predictive, agile, and hybrid ways of working.",
+    testing:"Whether you pick the right approach for the project in front of you and run the mechanics well across the whole of delivery.",
+    tip:"Read the shape of the work first. A fixed-scope build and an agile backlog want different handling; do not force one rhythm onto both."},
+  business: {label:"Business Environment", code:"BE", weight:"26%", tasks:8, cls:"be",
+    blurb:"How the project connects to the wider business: governance, compliance, change control, impediments and issues, risk, continuous improvement, and organisational and external change.",
+    testing:"Whether you keep sight of governance, risk, and value, why the project exists and how it is controlled, not just whether it is on time.",
+    tip:"Do not treat governance and risk as admin. Change control and a live risk register are what keep a project from quietly drifting."}
+};
+
+const TASKS = [
+  // ---------------- PEOPLE (33%) ----------------
+  {d:"people",n:1,name:"Develop a common vision",
+   jbi:"The reverse brief is where the shared vision starts: you play the objective back to the client before a proposal exists. Carry that one-line goal into kickoff and every status report so build decisions trace to it.", jbiTags:"<span class=\"jbi-tag\">Reverse brief</span><span class=\"jbi-tag\">Status report</span>",
+   what:"Build a shared sense of where the project is heading with key stakeholders, and keep it alive and current as things change.",
+   example:"Kicking off a rebuild, you distil the goal to one line — 'let customers self-serve so support volume drops' — and repeat it at every review so design and build decisions trace back to it.",
+   apply:"Open each project with a one-line vision in the kickoff deck, and restate it whenever scope debates start pulling in different directions.",
+   tips:["A vision people can recite beats a mission statement no one reads.","When someone's confused about direction, find the root cause — usually a missed conversation, not a bad plan."],
+   enablers:[["Ensure a shared vision","Land it with key stakeholders."],["Promote the vision","Keep repeating it so it sticks."],["Keep it current","Refresh it as the project changes."],["Find the root cause","Break down where a misunderstanding started."]]},
+  {d:"people",n:2,name:"Manage conflicts",
+   jbi:"Move friction off the wider Slack channel into a focused call on Teams or Google Meet with the right people. Record any decision that resolves it in the project diary log.", jbiTags:"<span class=\"jbi-tag\">Slack</span><span class=\"jbi-tag\">Teams / Meet</span><span class=\"jbi-tag\">Project diary log</span>",
+   what:"Spot conflict early, understand what's really driving it, and steer it to an agreed resolution — including holding the ground rules that prevent it.",
+   example:"A designer and developer clash over whether an interaction is feasible in the sprint. You surface the real constraint (time, not capability) and land a scoped-down version both accept.",
+   apply:"Name tension when you see it in stand-ups and move it to a focused conversation with the right people, off the wider channel.",
+   tips:["Separate the position from the interest — people rarely disagree about what they actually need.","Address it while it's a niggle, not once it's a formal escalation."],
+   enablers:[["Identify conflict sources","Work out where it's coming from."],["Analyse the context","Understand what's really driving it."],["Implement an agreed resolution","Land a way through the team accepts."],["Communicate the principles","Share how conflict is handled here."],["Foster ground rules","Build a culture that keeps to them."],["Rectify violations","Deal with breaches fairly."]]},
+  {d:"people",n:3,name:"Lead the project team",
+   jbi:"Your delivery team is the developers, business analysts, and design ops on the project. Set who owns what in the RACI at kickoff, and act as their voice to department leads and the client rather than a message passer.", jbiTags:"<span class=\"jbi-tag\">RACI</span><span class=\"jbi-tag team\">Delivery team</span><span class=\"jbi-tag team\">Department leads</span>",
+   what:"Set clear expectations and roles, choose the right leadership style, empower people to solve problems, and represent the team upward.",
+   example:"On a pressured launch you shift to a more directive style for crunch week, then hand autonomy back to the leads once it ships — and you carry their capacity concerns to the client yourself.",
+   apply:"Agree roles and what the team can decide without you at kickoff, then act as their voice with stakeholders rather than a message-passer.",
+   tips:["Empower, then get out of the way — but stay the one who clears blockers.","Match your style to the moment: directive under pressure, collaborative in discovery."],
+   enablers:[["Set team expectations","Make the bar explicit."],["Empower the team","Push decisions to the work."],["Solve problems","Unblock and decide."],["Represent the team's voice","Speak for them upward."],["Support varied perspectives","Make room for different strengths."],["Determine leadership style","Match style to the situation."],["Establish clear roles","Who owns what, no gaps."]]},
+  {d:"people",n:4,name:"Engage stakeholders",
+   jbi:"Build the stakeholder register at kickoff: name each stakeholder, their influence, and how you will engage them. Keep it live in Google Drive alongside the master index.", jbiTags:"<span class=\"jbi-tag\">Stakeholder register</span><span class=\"jbi-tag\">Google Drive</span>",
+   what:"Identify and analyse your stakeholders, tailor how you communicate with each, and actively build the trust to steer them toward the project's objectives.",
+   example:"You map the client's stakeholders on a power/interest grid — sponsor high/high, end users low power but high interest — and tailor how you involve each.",
+   apply:"Do a one-hour stakeholder map at kickoff and let it shape who you update, involve and consult, then work it all project long.",
+   tips:["Engagement is a strategy, not a mailing list.","Trust is the currency — deliver small promises to earn the big asks."],
+   enablers:[["Identify stakeholders","Find everyone with a stake."],["Analyse stakeholders","Grids and influence mapping."],["Tailor communication","Pitch it to each stakeholder's needs."],["Execute the engagement plan","Work it, don't file it."],["Optimise alignment","Line needs up with objectives."],["Build trust and influence","Earn the right to steer."]]},
+  {d:"people",n:5,name:"Align stakeholder expectations",
+   jbi:"The reverse brief and proposal align expectations before build starts. When they diverge mid-project, convene the parties on a call rather than settling it over email.", jbiTags:"<span class=\"jbi-tag\">Reverse brief</span><span class=\"jbi-tag\">Proposal</span>",
+   what:"Get stakeholders' differing expectations into the open and aligned before they collide — and use those moments to mentor and coach where you can.",
+   example:"Marketing and IT want different things from the CMS; you run a short alignment session so the trade-offs are made together, not litigated after build.",
+   apply:"When expectations feel divergent, convene the parties and align explicitly rather than hoping they converge.",
+   tips:["Alignment now is cheaper than rework later.","Facilitation is a mentoring moment — model how to disagree well."],
+   enablers:[["Categorise stakeholders","Group by how to engage them."],["Identify expectations","Surface what each one wants."],["Facilitate alignment","Run the conversation that squares them."],["Act on mentoring moments","Coach as the chance arises."]]},
+  {d:"people",n:6,name:"Manage stakeholder expectations",
+   jbi:"The client feedback form gives you a satisfaction signal you can act on. Between forms, watch for a client going quiet and check in directly before a concern becomes an escalation.", jbiTags:"<span class=\"jbi-tag\">Client feedback form</span>",
+   what:"Keep delivery outcomes matched to what internal and external customers expect, and monitor satisfaction so you can respond before it dips.",
+   example:"A quiet client is a warning sign; you check in directly, catch a brewing concern about a delayed feature, and reset expectations before it becomes an escalation.",
+   apply:"Track client sentiment as deliberately as you track scope — a lightweight pulse in every status cycle.",
+   tips:["Silence isn't satisfaction — go and check.","Reset expectations early; surprises at sign-off are the expensive kind."],
+   enablers:[["Identify customer expectations","Internal and external."],["Maintain outcomes to them","Keep delivery matched."],["Monitor satisfaction","Watch it and respond as needed."]]},
+  {d:"people",n:7,name:"Help ensure knowledge transfer",
+   jbi:"The project diary log and document index are your defence against knowledge walking out the door. Capture decisions as you go, and make sure a developer rolling off hands over before they leave.", jbiTags:"<span class=\"jbi-tag\">Project diary log</span><span class=\"jbi-tag\">Document index</span>",
+   what:"Identify the knowledge the project can't afford to lose, capture it, and build a culture where it moves across the team rather than sitting with one person.",
+   example:"Before a developer rolls off, you have them document the deployment process and walk a colleague through it, so the knowledge doesn't leave with them.",
+   apply:"Bake knowledge transfer into the plan — especially before roll-offs and at handover to the client or support team.",
+   tips:["Don't let one person be the single point of failure.","Capture knowledge as you go; a rushed handover loses the detail that matters."],
+   enablers:[["Identify critical knowledge","Know what can't be lost."],["Gather knowledge","Capture it while it's live."],["Foster transfer","Make sharing the norm."]]},
+  {d:"people",n:8,name:"Plan and manage communication",
+   jbi:"Set the channel per audience in the communication engagement plan: Slack for the team day to day, Gmail for formal client mail, Teams or Google Meet for calls, and a written status report each cycle. Match the detail to the audience.", jbiTags:"<span class=\"jbi-tag\">Comms engagement plan</span><span class=\"jbi-tag\">Slack</span><span class=\"jbi-tag\">Gmail</span><span class=\"jbi-tag\">Teams / Meet</span><span class=\"jbi-tag\">Status report</span>",
+   what:"Set a deliberate communication strategy — who needs what, how often, at what detail — and close the loop so messages land, feeding the governance process.",
+   example:"Weekly written status for the client, a daily stand-up for the team, a fortnightly steerco — each pitched at the right level, each with a way to respond.",
+   apply:"Build a simple comms plan at kickoff (audience, channel, frequency, detail) and reuse your status rhythm as its backbone.",
+   tips:["Sending isn't communicating — confirm it was understood.","Match the detail to the audience: exec summary up, detail down."],
+   enablers:[["Define a comms strategy","Who, what, how, how often."],["Promote transparency","Default to open and collaborative."],["Establish a feedback loop","Make it two-way."],["Understand reporting needs","Know what's required."],["Create aligned reports","Pitch to sponsor and stakeholders."],["Support governance","Feed the reporting process."]]},
+
+  // ---------------- PROCESS (41%) ----------------
+  {d:"process",n:1,name:"Develop an integrated plan and plan delivery",
+   jbi:"The estimate and reverse brief size the work and set the approach before you commit. Pull design, build, and content into one view on the project master index sheet and steer from it.", jbiTags:"<span class=\"jbi-tag\">Estimate</span><span class=\"jbi-tag\">Reverse brief</span><span class=\"jbi-tag\">Master index sheet</span>",
+   what:"Size the project, choose the right delivery approach, and pull the separate plans into one integrated whole you keep current and steer from data.",
+   example:"You reconcile the design, build and content plans into one view, spot that content sits on the critical path, and re-sequence before it bites.",
+   apply:"Choose the approach deliberately per project rather than defaulting, and keep one consolidated plan so cross-workstream dependencies surface early.",
+   tips:["The gaps live between the plans, not within them.","Fit the method to the project — there's no house style."],
+   enablers:[["Assess needs and complexity","Size the project honestly."],["Recommend an approach","Predictive, agile or hybrid."],["Determine critical info","e.g. sustainability requirements."],["Recommend execution strategy","Shape contracting and finance."],["Create the integrated plan","Bring the pieces together."],["Estimate effort and resources","Work out what it takes."],["Assess for gaps and value","Dependencies, gaps, business value."],["Maintain the plan","Keep it current."],["Decide from data","Collect and analyse it."]]},
+  {d:"process",n:2,name:"Develop and manage project scope",
+   jbi:"The reverse brief plays scope back to the client; the Software Requirements Specification (SRS) turns it into requirements and acceptance criteria. Get the boundary signed before build.", jbiTags:"<span class=\"jbi-tag\">Reverse brief</span><span class=\"jbi-tag\">SRS</span>",
+   what:"Define the scope, get explicit agreement on it, and break it down into something you can plan and track against.",
+   example:"You turn a discovery into a prioritised backlog, break it into a WBS for the fixed-price phase, and get the client to sign the boundary.",
+   apply:"Keep a clear, prioritised scope artefact and check delivery against it to catch creep early.",
+   tips:["Agreement in writing beats a shared assumption.","Prioritise ruthlessly — not everything is a must-have."],
+   enablers:[["Define scope","Set what's in and out."],["Get stakeholder agreement","Sign the boundary."],["Break down scope","WBS or backlog."]]},
+  {d:"process",n:3,name:"Help ensure value-based delivery",
+   jbi:"Sequence the highest-value work first, and track benefits against the value tracker so the business case stays honest as the project moves.", jbiTags:"<span class=\"jbi-tag\">Value tracker</span>",
+   what:"Work out where the value is, sequence work to deliver it early and incrementally, and keep checking the project is still worth doing.",
+   example:"On a rebuild you ship the highest-traffic templates first so the client sees performance gains early, instead of a big-bang launch months out.",
+   apply:"Sequence so the most valuable, riskiest things land early and can be validated; re-check the business case as you go.",
+   tips:["Ask 'what's the smallest thing that delivers value?' and ship that.","Value can erode — a plan that made sense at kickoff may not at month three."],
+   enablers:[["Identify value components","With key stakeholders."],["Prioritise by value","And by stakeholder feedback."],["Deliver incrementally","Ship value in slices."],["Examine value throughout","Keep the business case honest."],["Verify benefits measurement","Check a tracking system exists."],["Evaluate delivery options","Show value as you go."]]},
+  {d:"process",n:4,name:"Plan and manage resources",
+   jbi:"Map roles against phases in the estimate, and check the leave tracker before you commit to dates so a key developer's holiday does not derail a milestone. Request people through their department lead early.", jbiTags:"<span class=\"jbi-tag\">Estimate</span><span class=\"jbi-tag\">Leave tracker</span><span class=\"jbi-tag team\">Department leads</span>",
+   what:"Work out who and what the project needs, then manage availability and load as the work moves.",
+   example:"Scoping a discovery, you spot you'll need a content strategist for two weeks mid-project and line them up early rather than scrambling.",
+   apply:"Map roles against project phases at planning so resourcing requests go in before they're urgent.",
+   tips:["Resource against the whole lifecycle, not just week one.","A named person beats a hoped-for one."],
+   enablers:[["Define and plan resources","Based on the requirements."],["Optimise needs and availability","Manage the load as it shifts."]]},
+  {d:"process",n:5,name:"Plan and manage procurement",
+   jbi:"There is no dedicated JBi artefact here. When a project needs a third party, define the requirement in the SRS, agree terms, and manage the partner against delivery dates as part of your critical path.", jbiTags:"<span class=\"jbi-tag\">SRS</span><span class=\"jbi-tag\">Partners</span>",
+   what:"Define what you need to buy or contract, source it on the right terms, and manage suppliers and negotiations so they deliver.",
+   example:"A project needs a third-party translation service; you define the requirement, pick the contract type, negotiate terms, and manage the vendor against delivery dates.",
+   apply:"Treat external suppliers as part of your critical path — brief, contract and manage them as deliberately as your own team.",
+   tips:["Define requirements before you approach suppliers.","A supplier's slip is your slip — manage it actively."],
+   enablers:[["Plan procurement","Decide what and how to source."],["Select contract types","Pick the right commercial model."],["Negotiate agreements","Set and run the strategy."],["Evaluate vendor performance","Hold them to account."],["Verify objectives met","Check the agreement delivers."],["Manage suppliers and contracts","Run the delivery solution."]]},
+  {d:"process",n:6,name:"Plan and manage finance",
+   jbi:"The estimate sets the budget and contingency. Track burn against progress in each status report, and raise variance early with a recommended action rather than just a red flag.", jbiTags:"<span class=\"jbi-tag\">Estimate</span><span class=\"jbi-tag\">Status report</span>",
+   what:"Estimate the money the project needs including contingency, track spend across the lifecycle, and manage variance through governance.",
+   example:"At 60% of the timeline you're at 62% budget — broadly on track — but you flag a design-heavy sprint that could tip it and plan the reserve now.",
+   apply:"Track burn against progress in your status rhythm and raise variance early, with options, not just a red flag.",
+   tips:["Anticipate the squeeze before it happens.","Pair any variance with a recommended action."],
+   enablers:[["Analyse financial needs","Size the budget."],["Quantify contingency","Allocate for risk."],["Plan spend tracking","Across the lifecycle."],["Plan financial reporting","Decide what to report."],["Anticipate challenges","See the pressure coming."],["Monitor variations","Work it through governance."],["Manage reserves","Hold and release deliberately."]]},
+  {d:"process",n:7,name:"Plan and optimise quality",
+   jbi:"Set the quality bar in the SRS as acceptance criteria, for example WCAG 2.2 AA for accessibility, and build QA into each release rather than the final week.", jbiTags:"<span class=\"jbi-tag\">SRS</span>",
+   what:"Define the quality bar for deliverables, build checks into the delivery rhythm, and keep improving rather than inspecting quality in at the end.",
+   example:"You set WCAG 2.2 AA as the accessibility standard up front, so it's audited each release rather than bolted on before launch.",
+   apply:"Agree the quality standard with the client at the start and build QA into every release, not the final week.",
+   tips:["Define 'good' before you build, not at sign-off.","Catch quality gaps per release, when they're cheap to fix."],
+   enablers:[["Gather quality requirements","For each deliverable."],["Plan processes and tools","How you'll assure quality."],["Execute the quality plan","Run it, don't shelf it."],["Ensure regulatory compliance","Meet the standards that apply."],["Manage cost of quality","And sustainability."],["Review and improve","Ongoing reviews, continuous improvement."]]},
+  {d:"process",n:8,name:"Plan and manage schedule",
+   jbi:"Build the schedule from the estimate, baseline it on the master index sheet, and check the leave tracker for capacity gaps before you forecast dates.", jbiTags:"<span class=\"jbi-tag\">Estimate</span><span class=\"jbi-tag\">Master index sheet</span><span class=\"jbi-tag\">Leave tracker</span>",
+   what:"Estimate the work, build a realistic schedule that fits your delivery approach, baseline it, and manage variation honestly.",
+   example:"For a hybrid build you fix milestones for client-facing dates but run delivery in sprints, re-forecasting launch off velocity each fortnight.",
+   apply:"Pick an estimation method that fits the approach and re-baseline honestly rather than defending an optimistic plan.",
+   tips:["Use historical velocity, not optimism, to forecast.","Coordinate dependencies with other live projects early."],
+   enablers:[["Prepare for the approach","Fit it to the methodology."],["Coordinate with others","Projects and operations."],["Estimate tasks","Milestones, dependencies, story points."],["Use benchmarks","Lean on historical data."],["Create and baseline","Set the schedule and lock a baseline."],["Analyse variation","Track and re-plan honestly."]]},
+  {d:"process",n:9,name:"Evaluate project status",
+   jbi:"The project master index sheet and document index are your single source of truth, stored in Google Drive with clear versioning. Report against the baseline in each status report.", jbiTags:"<span class=\"jbi-tag\">Master index sheet</span><span class=\"jbi-tag\">Document index</span><span class=\"jbi-tag\">Google Drive</span><span class=\"jbi-tag\">Status report</span>",
+   what:"Keep a clear, current picture of where the project actually is — the metrics and the artifacts behind them — and communicate it.",
+   example:"You keep one source of truth for the SoW, RAID and status reports with clear versioning, and report progress against the baseline each week.",
+   apply:"Agree where artefacts live and how they're versioned at kickoff, and let real metrics — not gut feel — drive the status.",
+   tips:["One source of truth beats five conflicting copies.","Decide from data you actually collect."],
+   enablers:[["Develop metrics","Analysis and reconciliation."],["Tailor artifacts","Identify what you need."],["Keep artifacts current","Created, reviewed, updated, accessible."],["Assess progress","Measure against the plan."],["Communicate status","Report where things stand."],["Assess artifact management","Check the system works."]]},
+  {d:"process",n:10,name:"Manage project closure",
+   jbi:"Run a real close: confirm acceptance, execute the cutover plan to hand over to the client or support team, run the project retro, and close financials. Define done at the start, not the end.", jbiTags:"<span class=\"jbi-tag\">Cutover plan</span><span class=\"jbi-tag\">Project retro</span>",
+   what:"Define what 'done' means, confirm the transition is ready, and close the project or phase properly rather than letting it fade out.",
+   example:"At go-live you confirm acceptance criteria are met, hand over to the client's team with documentation, run a retro, and close procurement and financials.",
+   apply:"Agree closure criteria at the start, and run a real close — retro, lessons, financials — as a task with a date.",
+   tips:["Define 'done' at the beginning, not the end.","A real close captures lessons the next project can use."],
+   enablers:[["Obtain approval of completion","Stakeholders confirm it's done."],["Determine closure criteria","Define success up front."],["Validate transition readiness","Ops or next phase is ready."],["Conclude close-out","Lessons, retro, procurement, financials, resources."]]},
+
+  // ---------------- BUSINESS ENVIRONMENT (26%) ----------------
+  {d:"business",n:1,name:"Define and establish project governance",
+   jbi:"Governance runs through the Project Management Office (PMO) for delivery oversight and the Senior Management Team (SMT) for escalation. Set decision rights in the RACI and agree escalation thresholds at kickoff, for example any milestone slip or budget variance past 10% goes to the SMT.", jbiTags:"<span class=\"jbi-tag\">RACI</span><span class=\"jbi-tag team\">PMO</span><span class=\"jbi-tag team\">SMT</span>",
+   what:"Set the right governance for the project — decision rights, reporting, ethics, and escalation thresholds — drawing on organisational process assets.",
+   example:"On a twelve-week build you name a sponsor, set fortnightly steerco, define success metrics, and agree escalation triggers: any milestone slip or budget variance past 10% goes up immediately.",
+   apply:"At kickoff, right-size governance and write down who decides what, the cadence, and the escalation path with clear thresholds.",
+   tips:["Thresholds turn 'escalate if it feels bad' into a real control.","Match governance to project size — don't bureaucratise a small build."],
+   enablers:[["Establish the structure","Rules, reporting, ethics, policies via OPAs."],["Define success metrics","Set what good looks like."],["Outline escalation","Paths and thresholds."]]},
+  {d:"business",n:2,name:"Plan and manage project compliance",
+   jbi:"There is no single JBi artefact for this. Capture compliance needs such as accessibility, General Data Protection Regulation (GDPR), and security as requirements in the SRS at kickoff, and evidence them before launch rather than retro-fitting.", jbiTags:"<span class=\"jbi-tag\">SRS</span>",
+   what:"Identify the compliance the project must meet, build it in as a requirement, and evidence that you're meeting it.",
+   example:"A public-sector site must meet accessibility and data-protection rules. You classify the requirements, build them into acceptance criteria, and evidence compliance before launch.",
+   apply:"Surface compliance needs (accessibility, GDPR, security, sustainability) at kickoff and treat them as requirements, not last-minute checks.",
+   tips:["Classify compliance early — retro-fitting it is expensive.","Know the cost of getting it wrong; that's your priority signal."],
+   enablers:[["Confirm requirements","Security, safety, sustainability, regulatory."],["Classify categories","Group the compliance types."],["Determine threats","Spot what could breach it."],["Support compliance","Use methods to stay compliant."],["Analyse consequences","Cost of non-compliance."],["Determine actions","Address the needs."],["Measure compliance","Evidence you're meeting it."]]},
+  {d:"business",n:3,name:"Manage and control changes",
+   jbi:"Every new ask goes through the change log: scoped, priced, and signed off before work starts. Update the SRS and master index sheet so the documentation stays in step.", jbiTags:"<span class=\"jbi-tag\">Change log</span><span class=\"jbi-tag\">SRS</span><span class=\"jbi-tag\">Master index sheet</span>",
+   what:"Run changes through a clear control process — logged, assessed, communicated, approved — and keep the documentation in step.",
+   example:"The client asks for a blog-filtering feature mid-build. You scope it as a change request, price it, get sign-off before any work starts, and update the plan and scope docs.",
+   apply:"Have a lightweight change route agreed up front so new asks are captured, priced and approved, not absorbed silently.",
+   tips:["Every change gets logged, assessed and approved — no exceptions.","Change control protects the team as much as the budget."],
+   enablers:[["Execute change control","Run the agreed process."],["Communicate change status","Keep everyone informed."],["Implement approved changes","Put them into the project."],["Update documentation","Reflect the change everywhere."]]},
+  {d:"business",n:4,name:"Remove impediments and manage issues",
+   jbi:"Keep blockers and issues live in the risk register (RAID) and clear them by impact. Escalate the costly ones to the sponsor or SMT with a deadline and impact, and track daily until cleared.", jbiTags:"<span class=\"jbi-tag\">Risk register (RAID)</span><span class=\"jbi-tag team\">SMT</span>",
+   what:"Find what's blocking the team, clear it by impact, and when a risk turns into a live issue, attack it decisively with the right people.",
+   example:"The build stalls on client API credentials; you escalate to the sponsor with a clear deadline and impact, track it daily, and pull in the right engineer when staging goes down before UAT.",
+   apply:"Keep a live blocker and issue list in your status rhythm and treat clearing it as your job, not the team's.",
+   tips:["Prioritise blockers by impact on the critical path.","Name the moment a risk becomes an issue — then act."],
+   enablers:[["Evaluate impact","Size the impediment."],["Prioritise and highlight","Surface the costly ones."],["Apply an intervention","Remove or minimise it."],["Reassess continually","Confirm blockers stay cleared."],["Recognise risk-to-issue","Spot the shift."],["Collaborate on resolution","Bring in the right people."]]},
+  {d:"business",n:5,name:"Plan and manage risk",
+   jbi:"Run the risk register as a live register, not a log: score likelihood and impact, name a response per risk, and review it on a cadence in your status rhythm.", jbiTags:"<span class=\"jbi-tag\">Risk register (RAID)</span>",
+   what:"Identify and analyse risks, plan responses, keep the register live, and communicate what each risk means for the project.",
+   example:"Outstanding client content threatens the launch date. You log it, score it high, name a mitigation (a content deadline with a fallback), and review it weekly.",
+   apply:"Upgrade your RAID from a log to a live register: score likelihood and impact, name a response per risk, review on a cadence.",
+   tips:["A risk without a named response is just a worry.","Re-score regularly — priorities shift as the project moves."],
+   enablers:[["Identify risks","Find them early."],["Analyse risks","Likelihood and impact."],["Develop a risk plan","Decide responses up front."],["Maintain the register","Keep it live."],["Execute responses","Incl. security and sustainability."],["Communicate impact","Say what it means for the project."]]},
+  {d:"business",n:6,name:"Continuous improvement",
+   jbi:"The project retro is where lessons surface. Fold them into the estimate template, kickoff checklist, and SRS so the next project starts better. A lesson not acted on is just a note.", jbiTags:"<span class=\"jbi-tag\">Project retro</span><span class=\"jbi-tag\">Estimate template</span>",
+   what:"Turn lessons learned into changes that stick — feeding improvements back into the way the organisation runs projects.",
+   example:"A retro surfaces that content always slips; you update the kickoff checklist and estimate template so the next project plans content earlier by default.",
+   apply:"Don't let lessons die in a retro doc — fold them into templates, checklists and OPAs the next project will actually use.",
+   tips:["A lesson not acted on is just a note.","Improve the system, not just the project."],
+   enablers:[["Utilise lessons learned","Act on what you find."],["Update improvement processes","Keep them current."],["Update OPAs","Feed it back into the org."]]},
+  {d:"business",n:7,name:"Support organisational change",
+   jbi:"The cutover plan covers the technical handover. Plan the people side too, the training and comms, so the client team adopts the new way of working rather than just receiving it.", jbiTags:"<span class=\"jbi-tag\">Cutover plan</span>",
+   what:"Read the organisation's culture and manage the two-way impact between the project and the wider business.",
+   example:"A new self-serve site changes how the client's support team works. You help plan the transition — training, comms — so it lands with people, not just tech.",
+   apply:"Think beyond go-live: whose day-to-day does this change, and how do you help them adopt it?",
+   tips:["Tech launches; people adopt — plan for the second part.","Read the culture before pushing change on it."],
+   enablers:[["Assess culture","Read how the organisation works."],["Evaluate the impact","On the project, and determine actions."]]},
+  {d:"business",n:8,name:"Evaluate external business environment changes",
+   jbi:"There is no dedicated artefact for this. Keep half an eye on the client's external context such as regulation and market shifts, and raise it through the change log when something outside the project should change what is inside it.", jbiTags:"<span class=\"jbi-tag\">Change log</span>",
+   what:"Watch the outside world — regulation, tech, market, geopolitics — and adjust scope when it shifts under the project.",
+   example:"A new data-privacy rule lands mid-project. You assess the impact on scope, recommend the changes needed to stay compliant, and re-plan cost and schedule with the client.",
+   apply:"Keep half an eye on the client's external context and flag when something outside the project should change what's inside it.",
+   tips:["The brief can be overtaken by the outside world — stay alert.","Bring options, not just problems, when external change hits scope."],
+   enablers:[["Survey external changes","Regulation, tech, geopolitical, market."],["Assess impact on scope","Prioritise what it affects."],["Review continually","Keep scanning the environment."]]}
+];
+
+// build "learn more" links per task
+function links(t){
+  const q = encodeURIComponent(t.name + " project management delivery");
+  return [
+    ["PMP framework (PMI)", "https://www.pmi.org/certifications/project-management-pmp"],
+    ["Find out more", "https://www.google.com/search?q=" + q]
+  ];
+}
+
+const app = document.getElementById("app");
+let state = {domain:"all", q:""};
+
+function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+function hl(s,q){ if(!q) return s; const re=new RegExp("("+q.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+")","ig"); return s.replace(re,"<mark>$1</mark>"); }
+
+function matches(t,q){
+  if(!q) return true;
+  const hay=[t.name,t.what,t.jbi,t.example,t.apply,...t.tips,...t.enablers.flat()].join(" ").toLowerCase();
+  return hay.includes(q);
+}
+
+function render(){
+  const q = state.q.trim().toLowerCase();
+  let html = "";
+  const doms = state.domain==="all" ? ["people","process","business"] : [state.domain];
+
+  doms.forEach(dk=>{
+    const d = DOMAINS[dk];
+    const list = TASKS.filter(t=>t.d===dk && matches(t,q));
+    if(q && list.length===0) return;
+    if(!q || state.domain!=="all"){
+      html += `<section class="domain-head ${d.cls}">
+        <div class="eyebrow">${d.label} · ${d.code} · ${d.tasks} tasks</div>
+        <h2>${d.label}</h2>
+        <p>${d.blurb}</p>
+        <div class="testing"><b>Why it matters in delivery:</b> ${d.testing}</div>
+        <div class="dtip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1h6c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2Z"/></svg><div><b>Top tip.</b> ${d.tip}</div></div>
+      </section>`;
+    }
+    if(state.domain!=="all" || q){
+      html += `<p class="count">${list.length} task${list.length!==1?"s":""}${q?` matching “${esc(state.q.trim())}”`:""}</p>`;
+    }
+    list.forEach(t=>{ html += taskCard(t,q); });
+  });
+
+  if(state.domain==="all" && !q){
+    html = "";
+    ["people","process","business"].forEach(dk=>{
+      const d=DOMAINS[dk];
+      const list=TASKS.filter(t=>t.d===dk);
+      html += `<section class="domain-head ${d.cls}">
+        <div class="eyebrow">${d.label} · ${d.code} · ${d.tasks} tasks</div>
+        <h2>${d.label}</h2>
+        <p>${d.blurb}</p>
+        <div class="testing"><b>Why it matters in delivery:</b> ${d.testing}</div>
+        <div class="dtip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1h6c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2Z"/></svg><div><b>Top tip.</b> ${d.tip}</div></div>
+      </section>`;
+      list.forEach(t=>{ html += taskCard(t,q); });
+    });
+  }
+
+  if(!html.trim()){
+    html = `<div class="empty">No tasks match “${esc(state.q.trim())}”. Try a different word.</div>`;
+  }
+  app.innerHTML = html;
+}
+
+function taskCard(t,q){
+  const d = DOMAINS[t.d];
+  const en = t.enablers.map(e=>`<li><span class="en-dot"></span><span><span class="en-name">${hl(esc(e[0]),q)}</span> — <span class="en-gloss">${hl(esc(e[1]),q)}</span></span></li>`).join("");
+  const tips = t.tips.map(x=>`<li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg><span>${hl(esc(x),q)}</span></li>`).join("");
+  const lk = links(t).map(l=>`<a href="${l[1]}" target="_blank" rel="noopener">${l[0]}<svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></a>`).join("");
+  return `<details class="task">
+    <summary class="task-btn">
+      <span class="code ${d.cls}">${d.code}·${t.n}</span>
+      <span class="task-name">${hl(esc(t.name),q)}</span>
+      <svg class="chev" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+    </summary>
+    <div class="task-body">
+      <div class="block"><h4><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>What it means</h4><p>${hl(t.what,q)}</p></div>
+      <div class="block jbi-block"><h4><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 2 4 6v6c0 5 3.4 8.5 8 10 4.6-1.5 8-5 8-10V6l-8-4Z"/><path d="m9 12 2 2 4-4"/></svg>JBi in practice</h4><p>${hl(t.jbi,q)}</p><div class="jbi-arte">${t.jbiTags}</div></div>
+      <div class="block"><h4><svg viewBox="0 0 24 24"><path d="M3 7h18M3 12h18M3 17h12"/></svg>Enablers</h4><ul class="enablers">${en}</ul></div>
+      <div class="block"><h4><svg viewBox="0 0 24 24"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>Real delivery example</h4><div class="example">${hl(t.example,q)}</div></div>
+      <div class="block"><h4><svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/><circle cx="12" cy="12" r="4"/></svg>How to apply it</h4><p>${hl(t.apply,q)}</p></div>
+      <div class="block"><h4><svg viewBox="0 0 24 24"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1h6c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2Z"/></svg>Top tips</h4><ul class="tips">${tips}</ul></div>
+      <div class="block"><h4><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg>Learn more</h4><div class="links">${lk}</div></div>
+    </div>
+  </details>`;
+}
+
+document.querySelectorAll(".pill").forEach(p=>{
+  p.addEventListener("click",()=>{
+    state.domain=p.dataset.domain;
+    document.querySelectorAll(".pill").forEach(x=>x.setAttribute("aria-pressed", x===p?"true":"false"));
+    render(); window.scrollTo({top:0,behavior:"smooth"});
+  });
+});
+document.querySelectorAll(".seg").forEach(s=>{
+  s.addEventListener("click",()=>{
+    const dk=s.dataset.domain;
+    state.domain=dk;
+    document.querySelectorAll(".pill").forEach(x=>x.setAttribute("aria-pressed", x.dataset.domain===dk?"true":"false"));
+    render();
+    document.querySelector(".controls").scrollIntoView({behavior:"smooth",block:"start"});
+  });
+});
+document.getElementById("q").addEventListener("input",e=>{ state.q=e.target.value; render(); });
+
+render();
+</script>
+</html>
